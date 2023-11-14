@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const Nav = () => {
-
-  const [nav, setNav] = useState(false)
+  const [nav, setNav] = useState(false);
 
   const handleClick = () => {
+    setNav(!nav);
+  };
+
+  const handleClose = () => {
     setNav(!nav)
   }
 
@@ -15,11 +18,21 @@ const Nav = () => {
         <div className="flex items-center">
           <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BRAND.</h1>
           <ul className="hidden md:flex">
-            <li>Home</li>
-            <li>About</li>
-            <li>Support</li>
-            <li>Platforms</li>
-            <li>Pricing</li>
+            <a href="#home">
+              <li>Home</li>
+            </a>
+            <a href="#about">
+              <li>About</li>
+            </a>
+            <a href="#support">
+              <li>Support</li>
+            </a>
+            <a href="#platforms">
+              <li>Platforms</li>
+            </a>
+            <a href="#pricing">
+              <li>Pricing</li>
+            </a>
           </ul>
         </div>
 
@@ -31,16 +44,26 @@ const Nav = () => {
         </div>
 
         <div className="md:hidden mr-4" onClick={handleClick}>
-          {nav ? <XMarkIcon className="w-8"/> : <Bars3Icon className="w-8" />}
+          {nav ? <XMarkIcon className="w-8" /> : <Bars3Icon className="w-8" />}
         </div>
       </div>
 
-      <ul className={nav ? "absolute bg-zinc-200 w-full px-8": "hidden"}>
-        <li className="border-b-2 border-zinc-300">Home</li>
-        <li className="border-b-2 border-zinc-300">About</li>
-        <li className="border-b-2 border-zinc-300">Support</li>
-        <li className="border-b-2 border-zinc-300">Platforms</li>
-        <li className="border-b-2 border-zinc-300">Pricing</li>
+      <ul className={nav ? "absolute bg-zinc-200 w-full px-8" : "hidden"}>
+        <a href="#home" onClick={handleClose}>
+          <li className="border-b-2 border-zinc-300">Home</li>
+        </a>
+        <a href="#about" onClick={handleClose}>
+          <li className="border-b-2 border-zinc-300">About</li>
+        </a>
+        <a href="#support" onClick={handleClose}>
+          <li className="border-b-2 border-zinc-300">Support</li>
+        </a>
+        <a href="#platforms" onClick={handleClose}>
+          <li className="border-b-2 border-zinc-300">Platforms</li>
+        </a>
+        <a href="#pricing" onClick={handleClose}>
+          <li className="border-b-2 border-zinc-300">Pricing</li>
+        </a>
 
         <div className="flex flex-col my-4">
           <button className="bg-transparent text-indigo-600 px-8 py-3 mb-4">
